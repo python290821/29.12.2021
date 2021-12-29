@@ -1,5 +1,6 @@
 from OutOfSalmonException import *
 from SomethingWentWrongException import *
+import sys
 
 class KitchenSupervisor:
     def __init__(self, name, cook):
@@ -15,7 +16,8 @@ class KitchenSupervisor:
         except OutOfSalmonException as e:
             #return 'get voucher of 500 shekel'
             # buy new salmon ASAP
-            raise SomethingWentWrongException(e)
+            tb = sys.exc_info()[2]
+            raise SomethingWentWrongException(e).with_traceback(tb)
 
         d = self.cook.make_dish(order_name)
         return d

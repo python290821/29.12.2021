@@ -10,8 +10,11 @@ c = Cook('eyal ben shany')
 s = KitchenSupervisor('ronny', c)
 w = Waiter('danny', s)
 
-print(w.get_order('sunset'))
-print(w.get_order('sunset'))
+try:
+    print(w.get_order('sunset'))
+    print(w.get_order('sunset'))
+except SomethingWentWrongException as e:
+    print(e)
 '''
 try:
     print(w.get_order('sunset'))
