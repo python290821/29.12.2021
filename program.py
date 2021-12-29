@@ -1,31 +1,17 @@
 
-f1 = None
+# try - else
 try:
-    file_name = 'c:/temp/1.txt'
-    f1 = open(file_name)
-    for line in f1.readlines():
-        print(line, end='')
-    # f1.close()
-except FileNotFoundError as e:
+    int1_safe = int(input('Enter number (i dont trust you): '))
+except ValueError as e:
     print(e)
-except PermissionError as e:
-    print(e)
-except Exception as e:
-    print(e)
+else:
+    # out of try scope, but still execute finally after me ...............
+    int2_unsafe = int(input('Enter number (i trust you): '))
+    ################################
 finally: # will always be executed
-    if f1 != None:
-        f1.close()
+    print('thank you for your cooperation')
 
-########################### 1
-try:
-    file2 = open ('c:/temp/2.txt', 'w')
-    file2.write('hello world')
-finally:
-    file2.close()
-############################ 2
-with open('c:/temp/2.txt', 'w') as file2:
-    file2.write('hello world')
-## 1 == 2
+
 
 
 
